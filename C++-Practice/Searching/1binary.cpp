@@ -1,20 +1,41 @@
 #include <iostream>
 using namespace std;
+int BinarySearch(int const *arr, const int size,int key){
+    int mid{};
+    int start{};
+    int end{size-1};
+    while (start <= end) {
+        mid = (start + end) / 2;
 
-int main(){
-int arr[6]={0,2,4,6,8,10};
-int key=2;
-int mid,l=0,h=6-1;
-while(l<=h){
-    mid=(l+h)/2;
-    if (key==arr[mid]){
-   cout<<mid;
-   return 0;
-    }
-    else if(key<arr[mid]) 
-    h=mid-1;
-    else
-    h=mid+1;
+        if (arr[mid] == key) {
+
+            return mid;
+        }
+        else if (arr[mid] < key) {
+            start = mid + 1;
+        }
+        else {
+            end = mid - 1;
+        }
+       
+   }
+    if(key <arr[mid])
+        return mid;
+      else 
+      return mid +1;
+
 }
 
+int main()
+{    int size = 7;
+    int arr[] = {10, 20, 30, 40, 50, 60, 70};
+    
+    int key = 77;
+    cout<<BinarySearch(arr,size,key);
+
+    return 0;
 }
+
+
+
+
